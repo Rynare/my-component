@@ -2,7 +2,7 @@
 
 ```html
 <!-- Head -->
-<link rel="stylesheet" href="./style-final.css">
+<link rel="stylesheet" href="https://raw.githubusercontent.com/Rynare/my-component/refs/heads/main/timeline/ry-timeline.css">
 ```
 
 ```html
