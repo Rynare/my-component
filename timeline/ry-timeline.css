@@ -1,0 +1,137 @@
+.timeline {
+    --tl-style: dashed;
+    --tl-thickness: 2px;
+    --tl-color: grey;
+    --tl-list-width: 24px;
+    --tl-list-color: white;
+    --tl-list-bg-color: grey;
+    padding: 10px;
+    overflow: visible !important;
+}
+
+.timeline * {
+    transition: all 250ms ease;
+}
+
+.timeline .tl-item {
+    box-sizing: content-box;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: var(--tl-list-width);
+}
+
+.timeline .tl-item::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    content: '';
+    display: block;
+    border-left: var(--tl-thickness) var(--tl-style) var(--tl-color);
+}
+
+.timeline .tl-item .tl-list {
+    position: absolute;
+    z-index: 1;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translateX(-50%);
+    left: 0;
+}
+
+.timeline .tl-item .tl-list .tl-list-item {
+    aspect-ratio: 1/1;
+    width: var(--tl-list-width);
+    color: var(--tl-list-color);
+    background: var(--tl-list-bg-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: sticky;
+    bottom: 50vh;
+    top: 45vh;
+    transform: translate(0%, 50%);
+}
+
+/* Timeline zigzag style */
+/* Use class="timeline tl-zigzag" in container */
+.timeline.tl-zigzag .tl-item {
+    box-sizing: content-box;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 var(--tl-list-width);
+}
+
+.timeline.tl-zigzag .tl-item::after {
+    display: block;
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    top: -1px;
+}
+
+.timeline.tl-zigzag .tl-item:first-child::after {
+    border-top: none !important;
+}
+
+.timeline.tl-zigzag .tl-item:last-child::after {
+    border-bottom: none !important;
+}
+
+.timeline.tl-zigzag .tl-item:nth-child(odd)::after {
+    border-left: 2px var(--tl-style) black;
+    border-bottom: 2px var(--tl-style) black;
+    border-top: 2px var(--tl-style) black;
+    right: 50%;
+    left: 0;
+}
+
+.timeline.tl-zigzag .tl-item:nth-child(even)::after {
+    border-right: 2px var(--tl-style) black;
+    border-bottom: 2px var(--tl-style) black;
+    border-top: 2px var(--tl-style) black;
+    border-left: none;
+    left: 50%;
+    right: 0;
+}
+
+.timeline.tl-zigzag .tl-item .tl-list {
+    position: absolute;
+    z-index: 1;
+    height: 100%;
+    transform: translateX(-50%);
+    left: 0;
+}
+
+.timeline.tl-zigzag .tl-item:nth-child(even) .tl-list {
+    left: unset;
+    right: 0;
+}
+
+.timeline.tl-zigzag .tl-item .tl-list .tl-list-item {
+    aspect-ratio: 1/1;
+    width: var(--tl-list-width);
+    color: var(--tl-list-color);
+    background: var(--tl-list-bg-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: sticky;
+    bottom: 50vh;
+    top: 45vh;
+    margin-bottom: var(--tl-list-width);
+    transform: translate(0%, 50%);
+}
+
+.timeline.tl-zigzag .tl-item:nth-child(even) .tl-list .tl-list-item {
+    transform: translate(100%, 50%);
+}
